@@ -1,25 +1,22 @@
-stages:
-  - build
-  - deploy
+image: node:14.15.1 # change to match your project's node version
 
-build:
-  image: node:latest    # Run the job in a `node` docker image
-  stage: build
-  script:
-    - yarn install      # Run `yarn install` and `yarn build`
-    - yarn build
-  artifacts:
-    paths:
-      - build/          # Save the build result as an artfact
-      
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - rm -rf build
+  - CI=false npm install
+
 pages:
-  image: alpine:latest
   stage: deploy
-  variables:
-    GIT_STRATEGY: none        # Do not clone git repo
   script:
-    # Rename the CRA `build` folder to `public`
-    - mv build public         
+    - CI=false npm run build
+    - rm -rf public
+    - cp build/index.html build/404.html
+    - mv build public
   artifacts:
     paths:
       - public
+  only:
+    - master
