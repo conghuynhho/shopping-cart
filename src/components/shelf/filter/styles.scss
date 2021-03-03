@@ -1,0 +1,27 @@
+.filter-container{
+  float: left;
+  width: 15%;
+
+  .title-group{
+    display: flex;
+    align-items: center;
+    h4{
+      margin: 10px;
+    }
+  }
+  
+  .filter-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+    .filter-name{
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+  }
+  .filters{
+    text-align: left;
+  }
+}

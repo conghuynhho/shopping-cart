@@ -1,0 +1,27 @@
+.sort-container{
+  // border: 1px solid black;
+  background-color:#F5F5F5 ;
+  padding: 10px;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .sort-heading{
+    margin-right: 15px;
+  }
+  select{
+    outline: none;
+    cursor: pointer;
+    padding: 7px 12px;
+    min-width: 150px;
+    font-family: Quicksand, sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: 5px;
+    &:hover{
+      outline: 1px solid #696969;
+    }
+  }
+  
+}
