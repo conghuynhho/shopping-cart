@@ -1,34 +1,26 @@
-image: node:14.15.1 # change to match your project's node version
+image: node:14.15.1
 
 stages: 
   - build
   - deploy
 
-cache:
-  paths:
-    - node_modules/
-
-build-pages:
+build:
   stage: build
+  variables:
+    PUBLIC_URL: https://conghuynhho.gitlab.io/shopping-cart/
   script: 
-    - rm -rf build
-    - CI=false npm install
-    - CI=false npm run build
-    - rm -rf public
-    - cd build/index.html build/404.html
-    - mv build public
+    - yarn install
+    - yarn build
   artifacts: 
-    paths: 
-      - public
-#   only:
-    # - master
+    paths:
+      - build/
 
-
-pages:
+pages: 
   stage: deploy
+  variables:
+    GIT_STRATEGY: none
   script:
-    - ls
+    - mv build public
   artifacts:
     paths:
       - public
-

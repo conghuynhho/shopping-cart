@@ -6,7 +6,7 @@ function SelectBox({options}) {
   ))
   
   return (
-    <select size="1.2">
+    <select name="name">
       {createOption(options)}
     </select>
   );
