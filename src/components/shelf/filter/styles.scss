@@ -25,3 +25,12 @@
     text-align: left;
   }
 }
+
+@media only screen and (max-width: 530px){
+  .filter-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

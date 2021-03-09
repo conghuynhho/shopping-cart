@@ -23,7 +23,7 @@ function ProductItem({ product }) {
       <div className="product-item__image">
         <img src={product.imageLink} alt={product.name} />
       </div>
-      <p className="product-item__name">{product.name}</p>
+      <p className="product-item__name" title={product.name}>{product.name}</p>
       <div className="product-item__price">
         <div className="sale-price"><p>{formatCurrency(product.salePrice) + "đ"}</p></div>
         <div className="real-price"><small><strike>{formatCurrency(product.price) + "đ"}</strike></small></div>
