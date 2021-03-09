@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <div className="filter-container">
         <div className="title-group">
-          <i class="fas fa-filter"></i>
+          <i className="fas fa-filter"></i>
           <h4>Bộ lọc tìm kiếm</h4>
         </div>
         <Filter />

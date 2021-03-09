@@ -1,133 +1,45 @@
-import React from 'react';
-import './styles.scss'
-import Sort from './sort/'
-import product from '../../static/product-img/2.jpg'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import fetchProducts from '../../services/shelf/action';
+import Spinner from '../UI/spinner';
+import ProductItem from './product';
+import Sort from './sort/';
+import './styles.scss';
 
 function Shelf(props) {
-  // const product = {};
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.shelf);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
+  const generateProductList = (state) => {
+    if (state.fetchDataPending) return;
+    if (state.products.length === 0) {
+      return <h2>Opps, there is no product to show</h2>
+    }
+    if (state.error) {
+      return <h2>Opps, something was wrong, please try again later</h2>
+    }
+
+    const list = state.products.map((product) => {
+      return (
+        <ProductItem key={product.id} product={product} />
+      );
+    })
+    return list;
+  }
 
   return (
     <div className="shelf-container">
       <div className="shelf-header">
-        <div><p>Tìm thấy 20 sản phẩm</p></div>
+        <div><p>Tìm thấy <b>{state.products.length}</b> sản phẩm</p></div>
         <Sort />
       </div>
       {/* {product} */}
+      {state.fetchDataPending && <Spinner />}
       <div className="product-item-container">
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
-        <div className="product-item">
-          <div className="product-topper">
-            Free shipping
-          </div>
-          <div className="product-item__image">
-            <img src={product} alt="product" />
-          </div>
-          <p className="product-item__name">Cat Black TShirt</p>
-          <div className="product-item__price">
-            <div className="sale-price"><p>300.000đ</p></div>
-            <div className="real-price"><small><strike>350.000đ</strike></small></div>
-          </div>
-          <div className="product-item__buy-btn">Thêm vào giỏ</div>
-        </div>
+        {generateProductList(state)}
       </div>
     </div>
   );

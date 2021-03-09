@@ -5,7 +5,7 @@ function Filter(props) {
   return (
     <div>
       <div className="filter-header">
-        <p className="filter-name">Nơi bán:</p>
+        <p className="filter-name">Sizes:</p>
       </div>
       <div className="available-size filters">
         <input type="checkbox" name="size" id="size-s" value="s"/>
