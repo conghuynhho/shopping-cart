@@ -23,17 +23,8 @@ function Cart() {
     if (totalState.totalQuantity === 0) return;
     alert('Tổng giá trị đơn hàng của bạn là ❤: ' + formatCurrency(totalState.totalPrice) + 'đ');
   }
-  function countTotalPrice(list) {
-    if (list.length === 0) return 0;
-    const result = list.reduce((total, item) => {
-      total += item.salePrice;
-      return total;
-    }, 0);
-    return result;
-  }
-
   // Render Functions
-  function loadCart(cartState) {
+  function loadCartState(cartState) {
     if (!cartState.productToAdd && !cartState.productToRemove) return;
     let products = Array.from(cartState.products);
     const productToRemove = cartState.productToRemove;
@@ -101,12 +92,12 @@ function Cart() {
       <div className="cart-footer">
         <div className="check-out-btn" onClick={handleCheckOut}>
           Thanh toán:
-            <span>{" " + formatCurrency(countTotalPrice(cartState.products)) + "đ"}</span>
+            <span>{" " + formatCurrency((totalState.totalPrice)) + "đ"}</span>
         </div>
       </div>
     </div>);
   }
-  loadCart(cartState);
+  loadCartState(cartState);
   // Hooks
   useEffect(() => {
     dispatch(updateTotal(cartState.products))

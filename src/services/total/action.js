@@ -2,13 +2,12 @@ import { UPDATE_TOTAL } from "./actionTypes";
 
 const updateTotal = cartProducts => dispatch => {
 
-  // console.log("cartProduct" , cartProducts);
   let quantity = cartProducts.reduce((total, product) => {
     return total += product.quantity;
   }, 0);
 
   let totalPrice = cartProducts.reduce((total, product) => {
-    return total += product.salePrice;
+    return total += product.salePrice * product.quantity;
   }, 0);
 
 
