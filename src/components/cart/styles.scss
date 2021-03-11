@@ -1,9 +1,4 @@
 .cart {
-  &:hover {
-    .cart-content-wrapper {
-      display: block;
-    }
-  }
 
   .cart__open-btn {
     width: 35px;
@@ -36,24 +31,30 @@
   }
 
   .cart-content-wrapper {
-    display: none;
     position: absolute;
     z-index: 3;
     top: 80px;
     right: 100px;
     padding: 5px 8px;
     background-color: #fff;
-    min-width: 350px;
+    min-width: 150px;
     max-height: 500px;
     // height: 500px;
-    min-height: 250px;
+    min-height: 150px;
     // overflow: hidden;
     -webkit-box-shadow: 0 0 10px rgba(148, 142, 142, 0.61);
     box-shadow: 0 0 10px rgba(121, 119, 119, 0.548);
     border-radius: 10px;
 
+    .empty-text{
+      padding: 10px;
+      max-width: 200px;
+      max-height: 300px;
+    }
+
     &::before {
       content: "▲";
+      cursor: pointer;
       position: absolute;
       top: -38px;
       right: 0px;

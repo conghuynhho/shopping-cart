@@ -9,9 +9,12 @@ import './styles.scss';
 function Shelf(props) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.shelf);
+  const sortState = useSelector((state) => state.sort);
+  const filterState = useSelector((state) => state.filter);
+
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    dispatch(fetchProducts(sortState.type, filterState.item));
+  }, [sortState,filterState,dispatch]);
 
   const generateProductList = (state) => {
     if (state.fetchDataPending) return;
