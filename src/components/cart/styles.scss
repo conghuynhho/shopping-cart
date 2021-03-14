@@ -45,7 +45,8 @@
     -webkit-box-shadow: 0 0 10px rgba(148, 142, 142, 0.61);
     box-shadow: 0 0 10px rgba(121, 119, 119, 0.548);
     border-radius: 10px;
-
+    animation: cartSlideDown .3s linear ;
+    
     .empty-text{
       padding: 10px;
       max-width: 200px;
@@ -200,5 +201,20 @@
     .cart-content-wrapper {
       right: 32px;
     }
+  }
+}
+
+@keyframes cartSlideDown{
+  0%{
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  10%{
+    opacity: 0;
+    transform: translateY(-9%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
   }
 }
