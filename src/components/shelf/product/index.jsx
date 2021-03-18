@@ -2,6 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { pendingAddProduct } from '../../../services/cart/action';
 import formatCurrency from '../../../services/utils/formatCurrency';
+import PropTypes from 'prop-types';
+
+ProductItem.propTypes = {
+  product: PropTypes.object
+}
 
 function ProductItem({ product }) {
 
@@ -10,7 +15,6 @@ function ProductItem({ product }) {
    * Thực hiện pendingAddProduct đó 
    * sau đó kiểm tra nếu product đó tồn tại rồi thì update quantity thôi.
    */
-
 
   const dispatch = useDispatch();
   return (

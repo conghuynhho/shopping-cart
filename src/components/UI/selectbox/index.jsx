@@ -1,4 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+SelectBox.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.object),
+  handleSort: PropTypes.func,
+}
 
 function SelectBox({options, handleSort}) {
   function handleOnChange(e) {

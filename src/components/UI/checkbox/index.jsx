@@ -1,4 +1,6 @@
 import './styles.scss';
+import PropTypes from 'prop-types';
+
 
 const CheckBox = ({ name, value }) => {
 
@@ -8,6 +10,11 @@ const CheckBox = ({ name, value }) => {
       <label htmlFor={value} className="checkbox-name">Size {value}</label>
     </div>
   );
+}
+
+CheckBox.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string
 }
 
 export default CheckBox;

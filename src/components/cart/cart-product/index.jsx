@@ -2,6 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { pendingRemoveProduct } from '../../../services/cart/action';
 import formatCurrency from '../../../services/utils/formatCurrency'
+import PropTypes from 'prop-types'
+
+
+CartProduct.propTypes = {
+  product: PropTypes.object
+}
+
 
 function CartProduct({product}) {
   const dispatch = useDispatch();

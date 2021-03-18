@@ -6,7 +6,9 @@ import ProductItem from './product';
 import Sort from './sort/';
 import './styles.scss';
 
-function Shelf(props) {
+
+
+function Shelf() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.shelf);
   const sortState = useSelector((state) => state.sort);
